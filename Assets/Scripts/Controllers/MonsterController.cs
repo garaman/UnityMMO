@@ -12,6 +12,8 @@ public class MonsterController : BaseController
     [SerializeField] float _attackRange = 2.0f;
     public override void Init()
     {
+        WorldObjectType = Define.WorldObject.Monster;
+
         _stat = GetComponent<Stat>();       
 
         if(gameObject.GetComponentInChildren<UI_HPBar>() == null )
@@ -22,7 +24,8 @@ public class MonsterController : BaseController
 
     protected override void UpdateIdle()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = Managers.Game.GetPlayer();
+
         if( player == null ) { return; }
 
         float distance = (player.transform.position - transform.position).magnitude;
@@ -48,6 +51,10 @@ public class MonsterController : BaseController
                 nma.SetDestination(transform.position);
                 State = Define.State.Skill;
                 return;
+            }
+            else if(distance > _scanRange) 
+            {
+                State = Define.State.Idle;
             }
         }
 
@@ -82,10 +89,13 @@ public class MonsterController : BaseController
     {
         if (_lockTarget != null)
         {
-            Stat targetStat = _lockTarget.GetComponent<Stat>();
-            Stat myStat = gameObject.GetComponent<Stat>();
-            int damage = Mathf.Max(0, myStat.Attack - targetStat.Defense); 
-            targetStat.Hp -= damage;
+            Stat targetStat = _lockTarget.GetComponent<Stat>();            
+            targetStat.OnAttacked(_stat);
+
+            if(targetStat.Hp <= 0)
+            {
+                Managers.Game.Despawn(targetStat.gameObject);
+            }
 
             if(targetStat.Hp > 0)
             {

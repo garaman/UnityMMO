@@ -16,4 +16,9 @@ public static class Extension
         UI_Button.BindEvent(go, action, type);   
     }
 
+    public static bool IsVaild(this GameObject go)
+    {
+        return go != null && go.activeSelf;
+    }
+
 }
