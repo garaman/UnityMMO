@@ -9,6 +9,7 @@ public class SpawningPool : MonoBehaviour
     [SerializeField] int _reserveMonsterCount = 0;
     [SerializeField] int _keepMonsterCount = 0;
 
+    [SerializeField] Transform _spawnTransform;
     [SerializeField] Vector3 _spawnPos;
     [SerializeField] float _spawnRadius = 10.0f;
     [SerializeField] float _spawnTime = 5.0f;
@@ -16,11 +17,15 @@ public class SpawningPool : MonoBehaviour
 
     public void AddMonsterCount(int value) { _monsterCount += value; }
     public void SetKeepMonsterCount(int count) { _keepMonsterCount = count; }
+        
 
     void Start()
-    {
+    {        
         Managers.Game.OnSpawnEvent -= AddMonsterCount;
-        Managers.Game.OnSpawnEvent += AddMonsterCount;        
+        Managers.Game.OnSpawnEvent += AddMonsterCount;
+
+        _spawnTransform = this.gameObject.transform;
+        _spawnPos = _spawnTransform.position;
     }
 
 
@@ -39,7 +44,7 @@ public class SpawningPool : MonoBehaviour
 
         GameObject obj = Managers.Game.Spawn(Define.WorldObject.Monster, "Knight");
         NavMeshAgent nma = obj.GetComponent<NavMeshAgent>();
-        _spawnPos = obj.transform.position;
+        obj.transform.parent = _spawnTransform;
 
         Vector3 randPos;
         while(true)

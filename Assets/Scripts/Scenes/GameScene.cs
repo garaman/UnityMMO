@@ -16,12 +16,13 @@ public class GameScene : BaseScene
 
         gameObject.GetOrAddComponent<CursorController>();
 
-        GameObject Player =  Managers.Game.Spawn(Define.WorldObject.Player, "UnityChan");
+        GameObject Player =  Managers.Game.Spawn(Define.WorldObject.Player, "Player");
         Camera.main.gameObject.GetOrAddComponent<CameraController>().SetPlayer(Player);
 
         //Managers.Game.Spawn(Define.WorldObject.Monster, "Knight");
         GameObject go = new GameObject { name = "SpawningPool" };
         SpawningPool pool = go.GetOrAddComponent<SpawningPool>();
+        pool.transform.position = new Vector3(0,0,-30);
         pool.SetKeepMonsterCount(5);
     }
 
