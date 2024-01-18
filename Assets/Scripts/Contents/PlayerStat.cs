@@ -37,8 +37,7 @@ public class PlayerStat : Stat
     private void Start()
     {
         _level = 1;
-       
-        _defense = 5;
+               
         _speed = 8.0f;
 
         _exp = 0;
@@ -55,7 +54,8 @@ public class PlayerStat : Stat
 
         _hp = stat.maxhp;
         _maxHp = stat.maxhp;
-        _attack = stat.attack;
+        _attack = stat.attack * 10;
+        _defense = stat.defense;
         
     }
 

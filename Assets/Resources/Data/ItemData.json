@@ -1,22 +1,25 @@
 {
-  "ItemData": [
+  "Item": [
     {
-      "ItemId": "1",
-      "TemplateId": "200",
+      "ItemId": "1", 
+      "name": "물약",
+      "value": "200",
       "Count": "20",
       "Slot": "0",
       "Owner": "0"
     },
     {
-      "ItemId": "2",
-      "TemplateId": "200",
+      "ItemId": "2", 
+      "name": "롱소드",
+      "value": "15 ",
       "Count": "20",
       "Slot": "0",
       "Owner": "0"
     },
     {
-      "ItemId": "3",
-      "TemplateId": "200",
+      "ItemId": "3", 
+      "name": "가죽갑옷",
+      "value": "10",
       "Count": "20",
       "Slot": "0",
       "Owner": "0"
