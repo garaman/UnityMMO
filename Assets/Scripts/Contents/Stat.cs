@@ -36,6 +36,7 @@ public class Stat : MonoBehaviour
         { 
             Hp = 0;
             OnDead(attacker);
+            
         }  
     }
 
@@ -46,7 +47,16 @@ public class Stat : MonoBehaviour
         {
             playerStat.Exp += 15;
         }
-        
+                
+        ItemController item = gameObject.GetOrAddComponent<ItemController>();
+        string itemPath = item.DropItemKind();
+        if (itemPath != null)
+        {            
+            GameObject itemObj =  Managers.Resource.Instantiate(itemPath);
+            itemObj.GetOrAddComponent<ItemController>();
+            itemObj.transform.position = gameObject.transform.position;
+        }
+
         Managers.Game.Despawn(gameObject);
     }
 }

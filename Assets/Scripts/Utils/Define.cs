@@ -9,6 +9,7 @@ public class Define
         Unknown,
         Player,
         Monster,
+        Item,
     }
 
     public enum State
@@ -58,4 +59,34 @@ public class Define
         PointerUp,
         Click,
     }
+
+    public enum ItemType
+    {
+        NONE,
+        WEAPON,
+        ARMOR,
+        CONCUMABLE,
+    }
+
+    public enum WeaponType
+    {
+        NONE,
+        SWORD,
+        BOW,        
+    }
+
+    public enum ArmorType
+    {
+        NONE,
+        HELMET,
+        ARMOR,
+        BOOTS,
+    }
+
+    public enum ConumableType
+    {
+        NONE,
+        POTION,        
+    }
+
 }
