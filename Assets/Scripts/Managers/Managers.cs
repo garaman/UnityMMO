@@ -9,7 +9,9 @@ public class Managers : MonoBehaviour
 
     #region Contents
     GameMangerEx _game = new GameMangerEx();
+    InvenManager _inven = new InvenManager();
     public static GameMangerEx Game { get { return Instance._game; } }
+    public static InvenManager Inven { get { return Instance._inven; } }
     #endregion
 
     #region Core
@@ -59,6 +61,7 @@ public class Managers : MonoBehaviour
             s_instance._data.Init();
             s_instance._pool.Init();
             s_instance._sound.Init();
+            s_instance._inven.Init();
         }
     }
 
