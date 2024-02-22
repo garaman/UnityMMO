@@ -54,7 +54,7 @@ public class PlayerStat : Stat
 
         _hp = stat.maxhp;
         _maxHp = stat.maxhp;
-        _attack = stat.attack * 10;
+        _attack = stat.attack * 100;
         _defense = stat.defense;
         
     }

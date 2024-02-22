@@ -23,8 +23,8 @@ public class UI_Inven_Item : UI_Base
         Get<GameObject>((int)GameObjects.ItemIcon).BindEvent((PointerEventData) => { Debug.Log($"아이템 클릭 {_name}"); });
     }
 
-    public void SetInfo(string name)
+    public void SetInfo(int itemId)
     {
-        _name = name;
+        _name = Managers.Data.ItemDict[itemId].name;
     }
 }

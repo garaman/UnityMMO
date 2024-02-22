@@ -19,7 +19,7 @@ public class UI_Inven : UI_Scene
         foreach (Transform child in gridPanel.transform) 
         { 
             Managers.Resource.Destroy(child.gameObject);
-        }
+        }        
 
         /*
         for(int i = 0; i < 8; i++)
@@ -31,10 +31,19 @@ public class UI_Inven : UI_Scene
         */
     }
 
-    public void AddInven()
+    public void InvenCheck()
+    {
+
+    }
+
+    public UI_Inven_Item AddInven(int itemId)
     {
         GameObject item = Managers.UI.MakeSubItem<UI_Inven_Item>(gridPanel.transform).gameObject;
         UI_Inven_Item invenItem = item.GetOrAddComponent<UI_Inven_Item>();
+        invenItem.SetInfo(itemId);
+
+        return invenItem;
     }
-  
+
+
 }

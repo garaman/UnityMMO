@@ -18,7 +18,7 @@ public class UIManager
             if (root == null)
             {
                 root = new GameObject { name = "@UI_root" };
-            }
+            }            
             return root;
         }
     }
@@ -106,6 +106,17 @@ public class UIManager
         ClosePopupUI();
     }
 
+    public bool CheckPopupUI(UI_Popup popup)
+    {
+        if (_popupStack.Peek() == popup)
+        {            
+            return true;
+        }
+
+        return false;
+    }
+
+
     public void ClosePopupUI()
     {
         if(_popupStack.Count == 0) { return; }
@@ -116,14 +127,14 @@ public class UIManager
         
     }
 
-    public void CloaseAllPopupUI()
+    public void CloseAllPopupUI()
     {
         while(_popupStack.Count > 0) { ClosePopupUI(); }
     }
 
     public void Clear()
     {
-        CloaseAllPopupUI();
+        CloseAllPopupUI();
         _sceneUI = null;
     }
 }

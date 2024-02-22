@@ -49,7 +49,7 @@ public class Stat : MonoBehaviour
         }
                 
         ItemController item = gameObject.GetOrAddComponent<ItemController>();
-        string itemPath = item.DropItemKind();
+        string itemPath = item.path;
         if (itemPath != null)
         {            
             GameObject itemObj =  Managers.Resource.Instantiate(itemPath);

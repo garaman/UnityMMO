@@ -10,11 +10,10 @@ public class GameScene : BaseScene
         
         SceneType = Define.Scene.Game;
 
-        Managers.UI.ShowSceneUI<UI_Inven>();
-
         Dictionary<int, Data.Stat> dict = Managers.Data.StatDict;
 
         gameObject.GetOrAddComponent<CursorController>();
+        gameObject.AddComponent<InvenManager>();
 
         GameObject Player =  Managers.Game.Spawn(Define.WorldObject.Player, "Player");
         Camera.main.gameObject.GetOrAddComponent<CameraController>().SetPlayer(Player);
